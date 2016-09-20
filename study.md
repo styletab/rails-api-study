@@ -31,7 +31,8 @@ In your own words, define what the responsibilities of the model layer are in
 Rails.
 
 ```md
-<!-- your answer here -->
+The model layer does most of the grunt work in Rails. It holds Ruby classes that
+talk to the database, performs logic, and holds and stores data.
 ```
 
 ## Define Controller Responsiblities
@@ -40,7 +41,10 @@ In your own words, define what the responsibilities of the controller layer are
 in Rails.
 
 ```md
-<!-- your answer here -->
+The controller layer acts almost like a gatekeeper. It receives user requests/inputs
+(i.e. a URL, data submission) and decides what do to with them. Ideally, controllers
+should say lean and only take inputs, call model methods and pass outputs to the view.
+If you find that your controller has business logic in it, refactor it to the model.
 ```
 
 ## Define Router Responsiblities
@@ -48,7 +52,10 @@ in Rails.
 In your own words, define what the router does in Rails.
 
 ```md
-<!-- your answer here -->
+In order for the controller to do its job, the router has to help it out. The router
+decides which controller receives which requests. Many times there will be more than
+one route to each controller and different routes can be served by different actions.
+
 ```
 
 ## The Request-Response Cycle in Rails
@@ -57,5 +64,12 @@ Starting with a client making a GET request to a particular URL, describe how
 the parts of Rails interact to produce and send a response.
 
 ```md
-<!-- your answer here -->
+1. Browser makes a request for a URL such as http://www.facebook.com/photo/20.
+2. The web server receives the request and uses routes to decide which controller to use.
+3. Once server will then use a dispatcher to create a new controller to make the GET request and pass the parameters.
+4. The controller receives the GET request and pings the model to retreive photo 20.
+5. Model retreives photo 20 for the controller.
+6. Then the controller gives photo 20 to the view to generate the HTML.
+7. Once the controller receives the data from both the model and view it'll return everything to the server.
+8. The server then takes turns the raw data into an HTTP response and sends it to the user.
 ```
